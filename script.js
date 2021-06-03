@@ -1,3 +1,6 @@
+const newBookButton = document.getElementById("new-book-button");
+const popupForm = document.getElementById("popup-prompt");
+const popupContainer = document.querySelector(".popup-container");
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -15,19 +18,21 @@ function displayBook() {
   });
 }
 
-const newBookButton = document.getElementById("new-book-button");
 newBookButton.addEventListener("click", () => {
   promptNewBookDetails();
   displayOverlay();
 });
 
 function promptNewBookDetails() {
-  const popupForm = document.getElementById("popup-prompt");
+  popupForm.classList.add("popup-active");
+  popupContainer.classList.remove("hidden");
 }
 
 const overlay = document.getElementById("popup-overlay");
 overlay.addEventListener("click", () => {
   overlay.style.display = "none";
+  popupForm.classList.remove("popup-active");
+  popupContainer.classList.add("hidden");
 });
 
 function displayOverlay() {
