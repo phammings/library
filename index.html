@@ -18,7 +18,13 @@
         <br />
         <input class="author" type="text" placeholder="Author" />
         <br />
-        <input class="pages" type="number" min="0" placeholder="Pages" />
+        <input
+          class="pages"
+          type="number"
+          min="0"
+          placeholder="Pages"
+          onkeypress="return onlyNumberKey(event)"
+        />
         <br />
         <label class="read-label">Read?</label>
         <input class="checkbox" type="checkbox" />

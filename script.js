@@ -52,6 +52,12 @@ function isAllEntriesFilled() {
 
 function createBook() {}
 
+function onlyNumberKey(evt) {
+  let ASCIICode = evt.which ? evt.which : evt.keyCode;
+  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+  return true;
+}
+
 function removeOverlay() {
   overlay.style.display = "none";
   popupForm.classList.remove("popup-active");
@@ -71,5 +77,4 @@ function displayOverlay() {
 }
 
 //Store user input into new book object
-//Alert user if
 //Display new book
