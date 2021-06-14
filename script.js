@@ -7,16 +7,23 @@ const pages = document.querySelector(".pages");
 const isRead = document.querySelector(".checkbox");
 const submitButton = document.querySelector(".submit-button");
 
+let book = {};
+
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.isRead = isRead;
+  this.info = function () {
+    console.log(`${title} by ${author}, ${pages} Pages, ${isRead}`);
+  };
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  myLibrary.push(book);
+}
 
 function displayBook() {
   myLibrary.forEach((book) => {
@@ -25,8 +32,12 @@ function displayBook() {
 }
 
 submitButton.addEventListener("click", () => {
-  isAllEntriesFilled();
-  createBook();
+  if (isAllEntriesFilled()) {
+    book = createBook();
+    addBookToLibrary();
+    removeOverlay();
+    resetFields();
+  }
 });
 
 newBookButton.addEventListener("click", () => {
@@ -44,13 +55,16 @@ function resetFields() {
 function isAllEntriesFilled() {
   if (title.value === "" || author.value === "" || pages.value === "") {
     alert("Please fill out any missing fields.");
+    return false;
   } else {
-    removeOverlay();
-    resetFields();
+    return true;
   }
 }
 
-function createBook() {}
+function createBook() {
+  let readStatus = isRead.checked ? "Read" : "Not Read";
+  return new Book(title.value, author.value, pages.value, readStatus);
+}
 
 function onlyNumberKey(evt) {
   let ASCIICode = evt.which ? evt.which : evt.keyCode;
@@ -70,7 +84,10 @@ function promptNewBookDetails() {
 }
 
 const overlay = document.getElementById("popup-overlay");
-overlay.addEventListener("click", () => removeOverlay());
+overlay.addEventListener("click", () => {
+  removeOverlay();
+  resetFields();
+});
 
 function displayOverlay() {
   overlay.style.display = "block";
