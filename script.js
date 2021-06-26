@@ -6,6 +6,7 @@ const author = document.querySelector(".author");
 const pages = document.querySelector(".pages");
 const isRead = document.querySelector(".checkbox");
 const submitButton = document.querySelector(".submit-button");
+const mainContainer = document.getElementById("main-content");
 
 let book = {};
 
@@ -17,12 +18,16 @@ function Book(title, author, pages, isRead) {
   this.pages = pages;
   this.isRead = isRead;
   this.info = function () {
-    console.log(`${title} by ${author}, ${pages} Pages, ${isRead}`);
+    return `${title} \n by ${author} \n ${pages} Pages \n ${isRead}`;
   };
 }
 
 function addBookToLibrary() {
   myLibrary.push(book);
+  let bookDisplay = document.createElement("DIV");
+  bookDisplay.classList.add("book-display");
+  bookDisplay.innerText = book.info();
+  mainContainer.appendChild(bookDisplay);
 }
 
 function displayBook() {
@@ -93,5 +98,4 @@ function displayOverlay() {
   overlay.style.display = "block";
 }
 
-//Store user input into new book object
 //Display new book

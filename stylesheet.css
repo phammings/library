@@ -34,7 +34,8 @@
 .author,
 .pages,
 .read-label,
-.checkbox {
+.checkbox,
+.submit-button {
   margin: 1em;
   margin-bottom: 0.5em;
 }
@@ -47,4 +48,13 @@
 
 .prompt-heading {
   font-size: 2em;
+}
+
+.book-display {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: grey;
+  margin: 1em;
+  padding: 1em;
 }
