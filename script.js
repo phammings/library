@@ -12,28 +12,57 @@ let book = {};
 
 let myLibrary = [];
 
+let buttonValue = 0;
+
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
   this.info = function () {
-    return `${title} \n by ${author} \n ${pages} Pages \n ${isRead}`;
+    return `${this.title} \n by ${this.author} \n ${this.pages} Pages \n ${this.isRead}`;
   };
 }
 
-function addBookToLibrary() {
-  myLibrary.push(book);
-  let bookDisplay = document.createElement("DIV");
+function createBookDisplay(bookDisplay) {
   bookDisplay.classList.add("book-display");
   bookDisplay.innerText = book.info();
   mainContainer.appendChild(bookDisplay);
 }
 
-function displayBook() {
-  myLibrary.forEach((book) => {
-    console.log(book);
+function assignReadStatusColour(bookReadStatus) {
+  bookReadStatus.classList = buttonValue;
+  if (myLibrary[bookReadStatus.value].isRead === "Read") {
+    bookReadStatus.classList.add("book-read");
+  } else {
+    bookReadStatus.classList.add("book-not-read");
+  }
+}
+
+function createBookReadStatus(bookDisplay) {
+  let bookReadStatus = document.createElement("BUTTON");
+  bookReadStatus.value = buttonValue++;
+  assignReadStatusColour(bookReadStatus);
+  bookDisplay.appendChild(bookReadStatus);
+
+  bookReadStatus.addEventListener("click", () => {
+    if (myLibrary[bookReadStatus.value].isRead === "Read") {
+      myLibrary[bookReadStatus.value].isRead = "Not Read";
+    } else {
+      myLibrary[bookReadStatus.value].isRead = "Read";
+    }
+    bookDisplay.innerText = book.info();
+    mainContainer.appendChild(bookDisplay);
+    assignReadStatusColour(bookReadStatus);
+    bookDisplay.appendChild(bookReadStatus);
   });
+}
+
+function addBookToLibrary() {
+  myLibrary.push(book);
+  let bookDisplay = document.createElement("DIV");
+  createBookDisplay(bookDisplay);
+  createBookReadStatus(bookDisplay);
 }
 
 submitButton.addEventListener("click", () => {
@@ -54,7 +83,6 @@ function resetFields() {
   title.value = "";
   author.value = "";
   pages.value = "";
-  isRead.checked = false;
 }
 
 function isAllEntriesFilled() {
@@ -86,6 +114,7 @@ function removeOverlay() {
 function promptNewBookDetails() {
   popupForm.classList.add("popup-active");
   popupContainer.classList.remove("hidden");
+  isRead.checked = false;
 }
 
 const overlay = document.getElementById("popup-overlay");
@@ -98,4 +127,5 @@ function displayOverlay() {
   overlay.style.display = "block";
 }
 
-//Display new book
+//Have option to delete book from library and shift to fill
+//in empty array spot
