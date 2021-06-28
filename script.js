@@ -53,8 +53,6 @@ function createBookReadStatus(bookDisplay) {
       myLibrary[bookReadStatus.value].isRead = "Read";
     }
     bookReadStatus.innerText = myLibrary[bookReadStatus.value].isRead;
-    bookDisplay.innerText = book.info();
-    mainContainer.appendChild(bookDisplay);
     assignReadStatusColour(bookReadStatus);
     bookDisplay.appendChild(bookReadStatus);
   });
