@@ -20,7 +20,7 @@ function Book(title, author, pages, isRead) {
   this.pages = pages;
   this.isRead = isRead;
   this.info = function () {
-    return `${this.title} \n by ${this.author} \n ${this.pages} Pages \n ${this.isRead}`;
+    return `${this.title} \n by ${this.author} \n ${this.pages} Pages`;
   };
 }
 
@@ -44,6 +44,7 @@ function createBookReadStatus(bookDisplay) {
   bookReadStatus.value = buttonValue++;
   assignReadStatusColour(bookReadStatus);
   bookDisplay.appendChild(bookReadStatus);
+  bookReadStatus.innerText = myLibrary[bookReadStatus.value].isRead;
 
   bookReadStatus.addEventListener("click", () => {
     if (myLibrary[bookReadStatus.value].isRead === "Read") {
@@ -51,6 +52,7 @@ function createBookReadStatus(bookDisplay) {
     } else {
       myLibrary[bookReadStatus.value].isRead = "Read";
     }
+    bookReadStatus.innerText = myLibrary[bookReadStatus.value].isRead;
     bookDisplay.innerText = book.info();
     mainContainer.appendChild(bookDisplay);
     assignReadStatusColour(bookReadStatus);
