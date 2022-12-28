@@ -58,3 +58,11 @@
   margin: 1em;
   padding: 1em;
 }
+
+.book-read {
+  background-color: green;
+}
+
+.book-not-read {
+  background-color: red;
+}
