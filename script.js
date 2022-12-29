@@ -67,14 +67,17 @@ function createBookDisplay(book, index) {
 
 function assignReadStatusColour(bookReadStatus, index) {
   if (myLibrary.books[index].isRead === "Read") {
+    bookReadStatus.classList.remove("book-not-read");
     bookReadStatus.classList.add("book-read");
   } else {
+    bookReadStatus.classList.remove("book-read");
     bookReadStatus.classList.add("book-not-read");
   }
 }
 
 function handleChangeReadStatus(event) {
   const index = event.target.parentElement.getAttribute("data-index");
+  const bookReadStatus = event.target;
   if (myLibrary.books[index].isRead === "Read") {
     myLibrary.books[index].isRead = "Not Read";
   } else {
