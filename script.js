@@ -85,7 +85,6 @@ function handleChangeReadStatus(event) {
   }
   assignReadStatusColour(bookReadStatus, index);
   bookReadStatus.innerText = myLibrary.books[index].isRead;
-  bookDisplay.appendChild(bookReadStatus);
 }
 
 function createReadStatus(bookDisplay, index) {
@@ -99,7 +98,7 @@ function createReadStatus(bookDisplay, index) {
 
 function handleBookDeletion(event) {
   const index = event.target.parentElement.getAttribute("data-index");
-  myLibrary.remove(deletedBookIndex);
+  myLibrary.remove(index);
   myLibrary.updateDisplayedBooks();
 }
 
@@ -146,11 +145,11 @@ function createBook() {
   return new Book(title.value, author.value, pages.value, readStatus);
 }
 
-// function onlyNumberKey(evt) {
-//   const ASCIICode = evt.which ? evt.which : evt.keyCode;
-//   if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
-//   return true;
-// }
+function onlyNumberKey(evt) {
+  const ASCIICode = evt.which ? evt.which : evt.keyCode;
+  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+  return true;
+}
 
 function removeOverlay() {
   overlay.style.display = "none";
