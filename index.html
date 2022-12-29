@@ -35,5 +35,12 @@
     <main id="main-content"></main>
 
     <script type="text/javascript" src="script.js"></script>
+    <script>
+      function onlyNumberKey(evt) {
+        const ASCIICode = evt.which ? evt.which : evt.keyCode;
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+        return true;
+      }
+    </script>
   </body>
 </html>
