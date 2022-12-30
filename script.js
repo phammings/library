@@ -162,8 +162,8 @@ submitButton.addEventListener("click", (event) => {
     myLibrary.updateDisplayedBooks();
     removeOverlay();
     resetFields();
-    event.preventDefault();
   }
+  event.preventDefault();
 });
 
 newBookButton.addEventListener("click", () => {
