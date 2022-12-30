@@ -9,7 +9,7 @@
     <div id="popup-overlay"></div>
 
     <div id="popup-prompt">
-      <div class="popup-container hidden">
+      <form class="popup-container hidden">
         <h2 class="prompt-heading">Add new book</h2>
         <br />
         <input class="title" type="text" placeholder="Title" />
@@ -27,7 +27,11 @@
         <label class="read-label">Read?</label>
         <input class="checkbox" type="checkbox" />
         <button class="submit-button">Submit</button>
-      </div>
+      </form>
+    </div>
+
+    <div id="popup-missing-fields" class="hidden">
+      <h2>Fill out all fields before submitting!</h2>
     </div>
 
     <button id="new-book-button">New Book</button>

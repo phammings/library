@@ -1,5 +1,6 @@
 const newBookButton = document.getElementById("new-book-button");
 const popupForm = document.getElementById("popup-prompt");
+const popupMissingField = document.getElementById("popup-missing-fields");
 const popupContainer = document.querySelector(".popup-container");
 const title = document.querySelector(".title");
 const author = document.querySelector(".author");
@@ -115,9 +116,14 @@ function resetFields() {
   isRead.checked = false;
 }
 
-function isAllEntriesFilled(event) {
+function isAllEntriesFilled() {
   if (title.value === "" || author.value === "" || pages.value === "") {
-    event.preventDefault();
+    popupMissingField.classList.add("popup-missing-field-active");
+    popupMissingField.classList.remove("hidden");
+    // setTimeout(() => {
+    //   popupMissingField.classList.add("hidden");
+    // }, 1000);
+    // event.preventDefault();
     return false;
   }
   return true;
@@ -149,13 +155,14 @@ function promptNewBookDetails() {
   popupContainer.classList.remove("hidden");
 }
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (event) => {
   if (isAllEntriesFilled()) {
     const book = createBook();
     myLibrary.add(book);
     myLibrary.updateDisplayedBooks();
     removeOverlay();
     resetFields();
+    event.preventDefault();
   }
 });
 
