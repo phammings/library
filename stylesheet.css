@@ -1,5 +1,11 @@
 html,
-body,
+body {
+  background: linear-gradient(to bottom right, #f1faee, #cdeae5);
+  background-attachment: fixed;
+  font-family: "Tahoma", sans-serif;
+  color: #1d3557;
+}
+
 .popup-container {
   height: 100%;
 }
@@ -7,21 +13,19 @@ body,
 .page-heading {
   display: flex;
   justify-content: center;
-}
-
-#new-book-button {
-  display: block;
-  margin: 0 auto;
-  width: 20%;
+  font-size: 3em;
 }
 
 #popup-overlay {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   cursor: pointer;
 }
 
@@ -41,12 +45,17 @@ body,
   max-width: 55%;
   max-height: 75%;
   gap: 0.4em;
-  background-color: blue;
+  color: #15253d;
   padding: 30px;
   text-align: center;
-  border: 2px solid black;
-  border-radius: 10px;
   transition: 200ms ease-in-out;
+
+  background: rgba(69, 123, 157, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.1px);
+  -webkit-backdrop-filter: blur(3.1px);
+  border: 1px solid rgba(181, 189, 200, 0.3);
 }
 
 .missing-field-container {
@@ -62,10 +71,15 @@ body,
   position: fixed;
   z-index: 2;
   text-align: center;
-  border: 2px solid black;
-  border-radius: 10px;
-  background-color: blue;
   transition: 300ms ease-in-out;
+
+  /* From https://css.glass */
+  background: rgba(241, 250, 238, 0.61);
+  border-radius: 5px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.1px);
+  -webkit-backdrop-filter: blur(3.1px);
+  border: 1px solid rgba(241, 250, 238, 0.3);
 }
 
 .popup-missing-field-active > h2 {
@@ -89,6 +103,72 @@ body,
   margin-top: 2em;
 }
 
+.delete-btn {
+  height: auto !important;
+  border: none;
+}
+
+#new-book-button {
+  border: 2px solid #000;
+}
+
+#new-book-button,
+.delete-btn {
+  display: block !important;
+  margin: 0 auto !important;
+  align-items: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#new-book-button:focus,
+.delete-btn:focus {
+  color: #171e29;
+}
+
+#new-book-button:hover,
+.delete-btn:hover {
+  border: 2px solid #000;
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+#new-book-button:active,
+.delete-btn:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+@media (min-width: 768px) {
+  #new-book-button {
+    min-width: 10em;
+  }
+  .delete-btn {
+    min-width: 1em;
+  }
+  .book-read,
+  .book-not-read {
+    min-width: 6em;
+  }
+}
+
 .flex-grow-placeholder {
   flex-grow: 1;
 }
@@ -106,20 +186,33 @@ body,
 }
 
 .book-display {
+  /* From https://css.glass */
+  background: rgba(181, 189, 200, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.1px);
+  -webkit-backdrop-filter: blur(3.1px);
+  border: 1px solid rgba(181, 189, 200, 0.3);
+
   display: flex;
   text-align: left;
-  background: grey;
+  position: sticky;
+  z-index: 0;
   margin: 2em;
   padding: 1em 2em 1em 2em;
   line-height: 1.5em;
 }
 
 .book-read {
-  background-color: green;
+  background-color: #457b9d;
+  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.45),
+    5px 5px 9px rgba(94, 104, 121, 0.3);
 }
 
 .book-not-read {
-  background-color: red;
+  background-color: #e63946;
+  box-shadow: inset -5px -5px 9px rgba(255, 255, 255, 0.45),
+    inset 5px 5px 9px rgba(94, 104, 121, 0.3);
 }
 
 .book-not-read,
@@ -127,4 +220,21 @@ body,
   margin-right: 1.5em;
   padding-right: 1em;
   padding-left: 1em;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f1faee !important;
+}
+
+.book-not-read:hover,
+.book-read:hover {
+  border: 2px solid #000;
+  border-color: #171e29;
+  fill: #171e29;
+}
+
+.book-not-read:active,
+.book-read:active {
+  border-color: #171e29;
+  fill: #171e29;
 }

@@ -54,6 +54,7 @@ function createReadStatus(bookDisplay, index) {
 
 function createDeleteBookButton(bookDisplay) {
   const deleteBookButton = document.createElement("BUTTON");
+  deleteBookButton.classList.add("delete-btn");
   deleteBookButton.innerText = "Delete";
   bookDisplay.appendChild(deleteBookButton);
 
