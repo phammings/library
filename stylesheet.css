@@ -22,34 +22,44 @@ body,
 
 .popup-container {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   min-width: 320px;
-  min-height: 300px;
+  min-height: 360px;
   max-width: 55%;
   max-height: 75%;
-  gap: 0.5em;
+  gap: 0.4em;
   background-color: blue;
   padding: 30px;
   text-align: center;
   border: 2px solid black;
   border-radius: 10px;
-  margin-top: 1em;
-  margin-bottom: auto;
   transition: 200ms ease-in-out;
 }
 
+.missing-field-container {
+  display: flex;
+  margin-left: 74%;
+  margin-right: auto;
+  transition: 300ms ease-in-out;
+}
+
 .popup-missing-field-active {
+  max-width: 25%;
+  margin-left: auto;
   position: fixed;
   z-index: 2;
-  left: 38%;
   text-align: center;
   border: 2px solid black;
   border-radius: 10px;
   background-color: blue;
-  transition: 200ms ease-in-out;
-  margin: 0% 10% 10% 0%;
+  transition: 300ms ease-in-out;
+}
+
+.popup-missing-field-active > h2 {
+  padding: 0.5em;
+  font-size: 1em;
 }
 
 .hidden {
@@ -66,6 +76,10 @@ body,
 .bottom-prompt-container {
   display: inline-flex;
   margin-top: 2em;
+}
+
+.flex-grow-placeholder {
+  flex-grow: 1;
 }
 
 .submit-button {

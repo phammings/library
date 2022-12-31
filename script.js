@@ -8,6 +8,7 @@ const pages = document.querySelector(".pages");
 const isRead = document.querySelector(".checkbox");
 const submitButton = document.querySelector(".submit-button");
 const mainContainer = document.getElementById("main-content");
+const overlay = document.getElementById("popup-overlay");
 
 function Library(books = []) {
   this.books = books;
@@ -120,10 +121,9 @@ function isAllEntriesFilled() {
   if (title.value === "" || author.value === "" || pages.value === "") {
     popupMissingField.classList.add("popup-missing-field-active");
     popupMissingField.classList.remove("hidden");
-    // setTimeout(() => {
-    //   popupMissingField.classList.add("hidden");
-    // }, 1000);
-    // event.preventDefault();
+    setTimeout(() => {
+      popupMissingField.classList.add("hidden");
+    }, 1000);
     return false;
   }
   return true;
@@ -134,7 +134,6 @@ function createBook() {
   return new Book(title.value, author.value, pages.value, readStatus);
 }
 
-const overlay = document.getElementById("popup-overlay");
 function removeOverlay() {
   overlay.style.display = "none";
   popupForm.classList.remove("popup-active");

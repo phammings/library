@@ -6,8 +6,7 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <div id="popup-overlay"></div>
-
+    <div id="popup-overlay" class="hidden"></div>
     <div id="popup-prompt">
       <form class="popup-container hidden">
         <h2 class="prompt-heading">Add new book</h2>
@@ -23,15 +22,18 @@
           placeholder="Pages"
           onkeypress="return onlyNumberKey(event)"
         />
-        <br />
-        <label class="read-label">Read?</label>
-        <input class="checkbox" type="checkbox" />
-        <button class="submit-button">Submit</button>
+        <br class="flex-grow-placeholder" />
+        <div class="bottom-prompt-container">
+          <label class="read-label">Read?</label>
+          <input class="checkbox" type="checkbox" />
+          <button class="submit-button">Submit</button>
+        </div>
       </form>
     </div>
-
-    <div id="popup-missing-fields" class="hidden">
-      <h2>Fill out all fields before submitting!</h2>
+    <div class="missing-field-container">
+      <div id="popup-missing-fields" class="hidden">
+        <h2>Fill out all fields before submitting!</h2>
+      </div>
     </div>
 
     <button id="new-book-button">New Book</button>
