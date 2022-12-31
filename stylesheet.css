@@ -4,6 +4,17 @@ body,
   height: 100%;
 }
 
+.page-heading {
+  display: flex;
+  justify-content: center;
+}
+
+#new-book-button {
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+}
+
 #popup-overlay {
   position: fixed;
   top: 0;
@@ -96,11 +107,11 @@ body,
 
 .book-display {
   display: flex;
-  justify-content: center;
-  text-align: center;
+  text-align: left;
   background: grey;
-  margin: 1em;
-  padding: 1em;
+  margin: 2em;
+  padding: 1em 2em 1em 2em;
+  line-height: 1.5em;
 }
 
 .book-read {
@@ -109,4 +120,11 @@ body,
 
 .book-not-read {
   background-color: red;
+}
+
+.book-not-read,
+.book-read {
+  margin-right: 1.5em;
+  padding-right: 1em;
+  padding-left: 1em;
 }

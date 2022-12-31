@@ -30,7 +30,7 @@ function handleChangeReadStatus(event) {
   const index = event.target.parentElement.getAttribute("data-index");
   const bookReadStatus = event.target;
   if (myLibrary.books[index].isRead === "Read") {
-    myLibrary.books[index].isRead = "Not Read";
+    myLibrary.books[index].isRead = "Not\nRead";
   } else {
     myLibrary.books[index].isRead = "Read";
   }
@@ -60,6 +60,12 @@ function createDeleteBookButton(bookDisplay) {
   deleteBookButton.addEventListener("click", handleBookDeletion);
 }
 
+function createFlexGrowPlaceholder(bookDisplay) {
+  const flexGrowPlaceholder = document.createElement("DIV");
+  flexGrowPlaceholder.classList.add("flex-grow-placeholder");
+  bookDisplay.appendChild(flexGrowPlaceholder);
+}
+
 Library.prototype.remove = function remove(bookIndex) {
   this.books.splice(bookIndex, 1);
 };
@@ -75,6 +81,7 @@ Library.prototype.createBookDisplay = function createBookDisplay(book, index) {
 
   bookDisplay.setAttribute("data-index", index);
 
+  createFlexGrowPlaceholder(bookDisplay);
   createReadStatus(bookDisplay, index);
   createDeleteBookButton(bookDisplay);
 
@@ -130,7 +137,7 @@ function isAllEntriesFilled() {
 }
 
 function createBook() {
-  const readStatus = isRead.checked ? "Read" : "Not Read";
+  const readStatus = isRead.checked ? "Read" : "Not\nRead";
   return new Book(title.value, author.value, pages.value, readStatus);
 }
 
