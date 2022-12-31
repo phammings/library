@@ -143,6 +143,7 @@ function removeOverlay() {
 overlay.addEventListener("click", () => {
   removeOverlay();
   resetFields();
+  popupMissingField.classList.add("hidden");
 });
 
 function displayOverlay() {
