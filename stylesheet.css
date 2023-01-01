@@ -49,6 +49,7 @@ body {
   padding: 30px;
   text-align: center;
   transition: 200ms ease-in-out;
+  margin-top: -5em;
 
   background: rgba(69, 123, 157, 0.6);
   border-radius: 16px;
@@ -105,17 +106,25 @@ body {
 
 .delete-btn {
   height: auto !important;
+  margin: 0 auto !important;
   border: none;
 }
 
 #new-book-button {
   border: 2px solid #000;
+  margin: 0 auto !important;
+}
+
+.submit-button {
+  height: 3em !important;
 }
 
 #new-book-button,
-.delete-btn {
+.delete-btn,
+.submit-button {
   display: block !important;
-  margin: 0 auto !important;
+  color: #15253d;
+  margin-left: 0 auto;
   align-items: center;
   background-color: #fff;
   box-sizing: border-box;
@@ -137,12 +146,14 @@ body {
 }
 
 #new-book-button:focus,
-.delete-btn:focus {
-  color: #171e29;
+.delete-btn:focus,
+.submit-button:focus {
+  color: #15253d;
 }
 
 #new-book-button:hover,
-.delete-btn:hover {
+.delete-btn:hover,
+.submit-button:hover {
   border: 2px solid #000;
   border-color: #06f;
   color: #06f;
@@ -150,7 +161,8 @@ body {
 }
 
 #new-book-button:active,
-.delete-btn:active {
+.delete-btn:active,
+.submit-button:active {
   border-color: #06f;
   color: #06f;
   fill: #06f;
@@ -164,7 +176,8 @@ body {
     min-width: 1em;
   }
   .book-read,
-  .book-not-read {
+  .book-not-read,
+  .submit-button {
     min-width: 6em;
   }
 }
@@ -201,6 +214,12 @@ body {
   margin: 2em;
   padding: 1em 2em 1em 2em;
   line-height: 1.5em;
+}
+
+.read-label {
+  font-weight: 600;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .book-read {
